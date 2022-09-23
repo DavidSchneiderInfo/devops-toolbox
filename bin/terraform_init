@@ -1,0 +1,6 @@
+#!/bin/bash
+
+terraform init \
+    -backend-config="key=$BACKEND_BUCKET_KEY" \
+    -backend-config="region=$BACKEND_BUCKET_REGION" \
+    -backend-config="bucket=$BACKEND_BUCKET_NAME"

@@ -1,0 +1,9 @@
+version: "3.9"  # optional since v1.27.0
+services:
+  toolbox:
+    build: .
+    env_file:
+      - .env
+    volumes:
+      - ./terraform:/srv
+      - ./tmp:/tmp
