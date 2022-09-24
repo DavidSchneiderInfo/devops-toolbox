@@ -1,0 +1,48 @@
+#!/bin/bash
+
+missing_parameter () {
+   echo "Missing parameter. Run:"
+   echo
+   echo "docker-compose run --rm toolbox help"
+   echo
+   echo "to display the help menu."
+   echo
+}
+
+show_help () {
+   echo "Run the following commands:"
+   echo
+   echo "- packer"
+   echo "- terraform"
+   echo "- help"
+   echo
+}
+
+echo
+echo "*******************"
+echo "* Devops Toolbox  *"
+echo "*******************"
+echo
+
+if [ $# -eq 0 ]
+  then
+    missing_parameter
+    exit
+fi
+
+case $1 in
+  packer)
+    cd /srv/packer
+    $@
+    ;;
+  terraform)
+    cd /srv/terraform
+    $@
+    ;;
+  help)
+    show_help
+    ;;
+  *)
+    $@
+    ;;
+esac

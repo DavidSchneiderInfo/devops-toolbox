@@ -1,0 +1,29 @@
+{
+  "builders": [
+    {
+      "type": "amazon-ebs",
+      "region": "eu-central-1",
+      "source_ami_filter": {
+        "filters": {
+          "name": "ubuntu",
+          "root-device-type": "ebs",
+          "virtualization-type": "hvm"
+        },
+        "most_recent": true,
+        "owners": ["self"]
+      },
+      "instance_type": "t2.micro",
+      "ssh_username": "ubuntu",
+      "ami_name": "kubernetes"
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "inline": [
+        "cloud-init status --wait",
+        "sudo apt-get update && sudo apt-get upgrade -y"
+      ]
+    }
+  ]
+}
