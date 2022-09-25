@@ -13,10 +13,12 @@ provider "aws" {
   region = "eu-central-1"
 }
 
-resource "aws_route53_zone" "main" {
-  name = var.domain_name
+module "dns" {
+  source = "./dns"
+
+  domain_name = var.domain_name
 }
 
-variable "domain_name" {
-  type = string
+module "k8s" {
+  source = "./k8s"
 }

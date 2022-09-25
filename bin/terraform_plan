@@ -2,4 +2,6 @@
 
 cd /srv/terraform
 
-terraform plan -out /tmp/terraform_plan
+terraform plan \
+    -out /tmp/terraform_plan \
+    -var="domain_name=${DOMAIN_NAME}"
