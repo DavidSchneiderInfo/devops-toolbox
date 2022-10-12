@@ -5,7 +5,7 @@
       "region": "eu-central-1",
       "source_ami_filter": {
         "filters": {
-          "name": "ubuntu",
+          "name": "ubuntu-22.04",
           "root-device-type": "ebs",
           "virtualization-type": "hvm"
         },
@@ -19,11 +19,8 @@
   ],
   "provisioners": [
     {
-      "type": "shell",
-      "inline": [
-        "cloud-init status --wait",
-        "sudo apt-get update && sudo apt-get upgrade -y"
-      ]
+      "type": "ansible",
+      "playbook_file": "../ansible/provision.yml"
     }
   ]
 }

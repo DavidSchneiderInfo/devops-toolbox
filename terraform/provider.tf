@@ -10,15 +10,5 @@ terraform {
 }
 
 provider "aws" {
-  region = "eu-central-1"
-}
-
-module "dns" {
-  source = "./dns"
-
-  domain_name = var.domain_name
-}
-
-module "k8s" {
-  source = "./k8s"
+  region = var.region
 }

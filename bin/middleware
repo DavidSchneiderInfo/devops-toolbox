@@ -12,6 +12,7 @@ missing_parameter () {
 show_help () {
    echo "Run the following commands:"
    echo
+   echo "- ansible"
    echo "- packer"
    echo "- terraform"
    echo "- help"
@@ -31,11 +32,18 @@ if [ $# -eq 0 ]
 fi
 
 case $1 in
+  ansible*)
+    echo "Chdir -> /srv/ansible"
+    cd /srv/ansible
+    $@
+    ;;
   packer)
+    echo "Chdir -> /srv/packer"
     cd /srv/packer
     $@
     ;;
   terraform)
+    echo "Chdir -> /srv/terraform"
     cd /srv/terraform
     $@
     ;;

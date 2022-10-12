@@ -2,6 +2,12 @@ variable "domain_name" {
   type = string
 }
 
-output "nameserver" {
-  value = module.dns.nameserver
+variable "region" {
+  type = string
+  default = "eu-central-1"
+}
+
+variable "availability_zone" {
+    type = string
+    default = "eu-central-1a"
 }

@@ -26,6 +26,11 @@ RUN curl -Lo kubectl https://storage.googleapis.com/kubernetes-release/release/$
 RUN chmod +x ./kubectl
 RUN mv ./kubectl /usr/local/bin/kubectl
 
+RUN export DEBIAN_FRONTEND=noninteractive && apt-get update && apt-get install -y \
+  ansible \
+  python3-pip
+RUN pip3 install boto boto3 
+
 RUN mkdir -p /srv
 RUN mkdir -p /tmp
 
@@ -34,5 +39,6 @@ WORKDIR /srv
 COPY bin/* /usr/local/bin
 COPY terraform /srv/terraform
 COPY packer /srv/packer
+COPY ansible /srv/ansible
 
 ENTRYPOINT [ "middleware" ]

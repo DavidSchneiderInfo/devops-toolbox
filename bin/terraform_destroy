@@ -1,0 +1,10 @@
+#!/bin/bash
+
+cd /srv/terraform
+
+terraform plan \
+    -out /tmp/terraform_plan \
+    -var="domain_name=${DOMAIN_NAME}" \
+    -destroy
+
+terraform apply /tmp/terraform_plan
