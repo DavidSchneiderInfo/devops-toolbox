@@ -1,9 +1,11 @@
 FROM alpine:latest
 
-RUN apk add --no-cache ansible packer terraform zsh
+RUN apk add --update --no-cache ansible packer py3-pip terraform zsh
+RUN pip install boto3
 
 RUN mkdir /devops && \
-    mkdir /devops/versions
+    mkdir /devops/versions && \
+    mkdir /tmp/terraform
 
 WORKDIR /devops
 

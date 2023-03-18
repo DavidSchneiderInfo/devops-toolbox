@@ -34,18 +34,21 @@ fi
 case $1 in
   ansible*)
     cat /devops/versions/ansible.txt
+    echo
     echo "Chdir -> /devops/ansible"
     cd /devops/ansible
     $@
     ;;
   packer)
     cat /devops/versions/packer.txt
+    echo
     echo "Chdir -> /devops/packer"
     cd /devops/packer
     $@
     ;;
   terraform)
     cat /devops/versions/terraform.txt
+    echo
     echo "Chdir -> /devops/terraform"
     cd /devops/terraform
     $@

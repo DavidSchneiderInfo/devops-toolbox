@@ -2,7 +2,7 @@ data "aws_ami" "node_ami" {
     owners = ["self"]
     filter {
         name   = "name"
-        values = ["kubernetes"]
+        values = ["docker-node"]
     }
 }
 

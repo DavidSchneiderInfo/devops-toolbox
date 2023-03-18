@@ -2,4 +2,6 @@
 
 cat /devops/versions/packer.txt
 
-packer build /devops/packer/kubernetes.json
+packer build -f /devops/packer/ubuntu.json
+
+packer build -f /devops/packer/docker-node.json
