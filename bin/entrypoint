@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 missing_parameter () {
    echo "Missing parameter. Run:"
@@ -33,18 +33,21 @@ fi
 
 case $1 in
   ansible*)
-    echo "Chdir -> /srv/ansible"
-    cd /srv/ansible
+    cat /devops/versions/ansible.txt
+    echo "Chdir -> /devops/ansible"
+    cd /devops/ansible
     $@
     ;;
   packer)
-    echo "Chdir -> /srv/packer"
-    cd /srv/packer
+    cat /devops/versions/packer.txt
+    echo "Chdir -> /devops/packer"
+    cd /devops/packer
     $@
     ;;
   terraform)
-    echo "Chdir -> /srv/terraform"
-    cd /srv/terraform
+    cat /devops/versions/terraform.txt
+    echo "Chdir -> /devops/terraform"
+    cd /devops/terraform
     $@
     ;;
   help)

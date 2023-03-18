@@ -1,6 +1,7 @@
-#!/bin/bash
+#!/bin/zsh
 
-cd /srv/terraform
+cat /devops/versions/terraform.txt
+cd /devops/terraform
 
 terraform plan \
     -out /tmp/terraform_plan \

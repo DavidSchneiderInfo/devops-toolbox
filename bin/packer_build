@@ -1,3 +1,5 @@
-#!/bin/bash
+#!/bin/zsh
 
-packer build /srv/packer/kubernetes.json
+cat /devops/versions/packer.txt
+
+packer build /devops/packer/kubernetes.json

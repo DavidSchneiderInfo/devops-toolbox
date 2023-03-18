@@ -5,8 +5,8 @@ services:
     env_file:
       - .env
     volumes:
-      - ./ansible:/srv/ansible
-      - ./terraform:/srv/terraform
-      - ./packer:/srv/packer
+      - ./ansible:/devops/ansible
+      - ./terraform:/devops/terraform
+      - ./packer:/devops/packer
       - ./tmp:/tmp
-      - ./bin/middleware:/usr/local/bin/middleware
+      - ./bin/entrypoint:/usr/local/bin/entrypoint
