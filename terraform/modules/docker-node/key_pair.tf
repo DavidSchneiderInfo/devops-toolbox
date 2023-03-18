@@ -10,7 +10,7 @@ resource "local_file" "private_key" {
 }
 
 resource "aws_key_pair" "public_key" {
-    key_name   = "${var.environment_name} public key"
+    key_name   = "${var.environment_name} docker-node public key"
     public_key = tls_private_key.private_key.public_key_openssh
 
     tags = {

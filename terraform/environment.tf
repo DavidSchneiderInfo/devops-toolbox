@@ -11,8 +11,8 @@ module "network" {
   environment_name = "${terraform.workspace == "default" ? "dev" : terraform.workspace}"
 }
 
-module "node" {
-  source = "./modules/node"
+module "docker-node" {
+  source = "./modules/docker-node"
 
   domain_name = var.domain_name
   environment_name = "${terraform.workspace == "default" ? "dev" : terraform.workspace}"

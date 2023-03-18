@@ -7,11 +7,11 @@ output "environment_url" {
 }
 
 output "node_ssh_login" {
-  value = "ubuntu@${module.node.node_ip}"
+  value = "ubuntu@${module.docker-node.node_ip}"
 }
 
 output "node_ssh_key" {
-  value = module.node.private_key
+  value = module.docker-node.private_key
 }
 
 output "nameserver" {
