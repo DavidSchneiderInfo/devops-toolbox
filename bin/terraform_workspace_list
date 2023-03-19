@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+cat /devops/versions/terraform.txt
+
+cd /devops/terraform
+
+echo
+echo "List of existing workspaces: "
+echo
+
+terraform workspace list

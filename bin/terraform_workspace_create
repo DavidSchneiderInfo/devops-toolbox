@@ -1,0 +1,26 @@
+#!/bin/zsh
+
+missing_parameter () {
+   echo "Missing parameter. Run:"
+   echo
+   echo "docker-compose run --rm toolbox terraform_workspace_create [WORKSPACE_NAME]"
+   echo
+   echo "to create a new workspace."
+   echo
+}
+
+cat /devops/versions/terraform.txt
+
+cd /devops/terraform
+
+echo
+echo "Creating new terraform workspace $1"
+echo
+
+if [ $# -eq 0 ]
+  then
+    missing_parameter
+    exit
+fi
+
+terraform workspace new $1
