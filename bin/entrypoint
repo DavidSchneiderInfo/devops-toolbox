@@ -15,6 +15,7 @@ show_help () {
    echo "- ansible"
    echo "- packer"
    echo "- terraform"
+   echo "- zsh"
    echo "- help"
    echo
 }
@@ -36,6 +37,7 @@ case $1 in
     cat /devops/versions/ansible.txt
     echo
     echo "Chdir -> /devops/ansible"
+    # shellcheck disable=SC2164
     cd /devops/ansible
     $@
     ;;

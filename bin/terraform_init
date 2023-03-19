@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 cat /devops/versions/terraform.txt
+
 cd /devops/terraform
     
 terraform init \

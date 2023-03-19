@@ -1,5 +1,5 @@
 output "environment_name" {
-  value = "${terraform.workspace == "default" ? "dev" : terraform.workspace}"
+  value = terraform.workspace == "default" ? "dev" : terraform.workspace
 }
 
 output "environment_url" {

@@ -5,7 +5,7 @@ resource "tls_private_key" "private_key" {
 
 resource "local_file" "private_key" {
     content         =  tls_private_key.private_key.private_key_pem
-    filename        =  "/tmp/terraform/node_key.pem"
+    filename        =  "/tmp/terraform/${var.environment_name}/node_key.pem"
     file_permission =  0400
 }
 
