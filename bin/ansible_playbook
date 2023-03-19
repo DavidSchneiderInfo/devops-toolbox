@@ -1,16 +1,16 @@
 #!/bin/zsh
 
-if [ $# -eq 2 ]
+if [ $# -eq 1 ]
   then
     if test -f "$1"
       then
-        ansible-playbook --private-key "/tmp/terraform/${ENVIRONMENT_NAME}/node_key.pem" -u ubuntu $1 --limit="_${2}"
+        ansible-playbook --private-key "/tmp/terraform/${ENVIRONMENT_NAME}/node_key.pem" -u ubuntu $1 --limit="_${ENVIRONMENT_NAME}"
       else
         echo "Playbook $1 not found."
         exit
     fi
     exit
   else
-    missing_parameter
+    echo "Invalid parameter."
     exit
 fi
