@@ -1,9 +1,15 @@
 plugin: aws_ec2
+use_extra_vars: true
 regions:
   - "eu-central-1"
+
 filters:
   tag:AnsibleHost: "yes"
+  instance-state-name : running
+
+keyed_groups:
+  - key: tags.AnsibleGroup
+  - key: tags.Environment
+
 compose:
-  ansible_host: instance_id
-groups:
-  docker_node: "'docker_node' in tags.AnsibleGroup"
+  ansible_host: public_ip_address
