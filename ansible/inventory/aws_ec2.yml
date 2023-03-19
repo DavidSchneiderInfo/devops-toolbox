@@ -4,5 +4,6 @@ regions:
 filters:
   tag:AnsibleHost: "yes"
 compose:
-  ansible_host: public_ip_address
-  ansible_user: ubuntu
+  ansible_host: instance_id
+groups:
+  docker_node: "'docker_node' in tags.AnsibleGroup"
