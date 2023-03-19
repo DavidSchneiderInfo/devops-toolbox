@@ -19,9 +19,10 @@ resource "aws_instance" "node_instance" {
     ]
 
     tags = {
-        Name = "Node ${var.environment_name}"
+        Name = "${var.environment_name} docker node"
         Environment = var.environment_name
-        AnsibleGroup = "Node"
+        AnsibleGroup = "docker_node"
+        AnsibleHost = "yes"
     }
 }
 

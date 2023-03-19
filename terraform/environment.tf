@@ -17,9 +17,9 @@ module "docker-node" {
   allow_http_ingress_name = module.network.allow_http
 }
 
-module "dns" {
-  source = "./modules/dns"
-
-  domain_name = var.domain_name
-  environment_name = terraform.workspace == "default" ? "dev" : terraform.workspace
-}
+#module "dns" {
+#  source = "./modules/dns"
+#
+#  domain_name = var.domain_name
+#  environment_name = terraform.workspace == "default" ? "dev" : terraform.workspace
+#}

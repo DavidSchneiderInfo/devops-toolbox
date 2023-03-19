@@ -2,7 +2,7 @@ plugin: aws_ec2
 regions:
   - "eu-central-1"
 filters:
-  tag:Environment: dev
+  tag:AnsibleHost: "yes"
 compose:
   ansible_host: public_ip_address
   ansible_user: ubuntu
