@@ -2,10 +2,11 @@
 - name: Provision docker-node
   hosts: group_docker_node
   user: ubuntu
-  become: yes
   gather_facts: false
   roles:
     - role: docker
-      become: true
+      become: yes
     - role: docker-compose
-      become: true
+      become: yes
+    - role: stack
+      become: yes
