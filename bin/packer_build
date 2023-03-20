@@ -2,6 +2,6 @@
 
 cat /devops/versions/packer.txt
 
-packer build -f /devops/packer/ubuntu.json
+packer build -force /devops/packer/ubuntu.json
 
-packer build -f /devops/packer/docker-node.json
+packer build -force /devops/packer/docker-node.json
