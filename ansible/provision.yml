@@ -1,9 +1,8 @@
 ---
-- name: Ansible Test Playbook
+- name: Provision docker-node
   gather_facts: false
-  hosts: all
+  hosts: group_docker_node
   user: ubuntu
   tasks:
-
     - name: Run Shell Command
       command: echo "Hello World"

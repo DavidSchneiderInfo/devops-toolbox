@@ -20,7 +20,8 @@
   "provisioners": [
     {
       "type": "ansible",
-      "playbook_file": "../ansible/provision.yml",
+      "playbook_file": "/devops/ansible/provision.yml",
+      "groups": [ "group_docker_node" ],
       "extra_arguments": [
         "-e ansible_remote_tmp=/tmp/.ansible/tmp"
       ]

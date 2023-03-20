@@ -9,7 +9,9 @@ filters:
 
 keyed_groups:
   - key: tags.AnsibleGroup
+    prefix: group
   - key: tags.Environment
+    prefix: env
 
 compose:
   ansible_host: public_ip_address

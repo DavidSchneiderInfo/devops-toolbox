@@ -4,7 +4,7 @@ if [ $# -eq 1 ]
   then
     if test -f "$1"
       then
-        ansible-playbook --private-key "/tmp/terraform/${ENVIRONMENT_NAME}/node_key.pem" -u ubuntu $1 --limit="_${ENVIRONMENT_NAME}"
+        ansible-playbook --private-key "/tmp/terraform/${ENVIRONMENT_NAME}/node_key.pem" -u ubuntu $1 --limit="env_${ENVIRONMENT_NAME}"
       else
         echo "Playbook $1 not found."
         exit

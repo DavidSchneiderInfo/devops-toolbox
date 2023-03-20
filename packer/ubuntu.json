@@ -22,7 +22,8 @@
       "type": "shell",
       "inline": [
         "cloud-init status --wait",
-        "sudo apt-get update && sudo apt-get upgrade -y"
+        "echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections",
+        "sudo apt-get update && sudo apt-get upgrade -q -y"
       ]
     }
   ]
