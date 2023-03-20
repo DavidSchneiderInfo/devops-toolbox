@@ -1,8 +1,11 @@
 ---
 - name: Provision docker-node
-  gather_facts: false
   hosts: group_docker_node
   user: ubuntu
-  tasks:
-    - name: Run Shell Command
-      command: echo "Hello World"
+  become: yes
+  gather_facts: false
+  roles:
+    - role: docker
+      become: true
+    - role: docker-compose
+      become: true
