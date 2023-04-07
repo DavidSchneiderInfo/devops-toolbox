@@ -1,0 +1,3 @@
+grafana:
+  username: david
+  password: "{{ lookup('password', '/tmp/ansible/grafana/password', length=32) }}"
