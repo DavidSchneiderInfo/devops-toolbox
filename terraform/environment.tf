@@ -22,4 +22,5 @@ module "dns" {
 
   domain_name = var.domain_name
   environment_name = terraform.workspace == "default" ? "dev" : terraform.workspace
+  root_ip = module.docker-node.node_ip
 }
