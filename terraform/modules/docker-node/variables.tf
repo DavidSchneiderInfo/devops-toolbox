@@ -18,7 +18,7 @@ variable "allow_all_egress_name" {
     type = string
 }
 
-variable "allow_sss_ingress_name" {
+variable "allow_ssh_ingress_name" {
     type = string
 }
 

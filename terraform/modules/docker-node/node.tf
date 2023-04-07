@@ -13,7 +13,7 @@ resource "aws_instance" "node_instance" {
     availability_zone = var.availability_zone
     security_groups = [
         var.allow_all_egress_name,
-        var.allow_sss_ingress_name,
+        var.allow_ssh_ingress_name,
         var.allow_https_ingress_name,
         var.allow_http_ingress_name
     ]
