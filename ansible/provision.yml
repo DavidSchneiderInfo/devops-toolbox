@@ -1,12 +1,22 @@
 ---
-- name: Provision docker-node
+- name: Install docker
   hosts: group_docker_node
-  user: ubuntu
+  remote_user: ubuntu
+  become: yes
+  become_user: root
   gather_facts: false
+  tags:
+    - install
   roles:
-    - role: docker
-      become: yes
-    - role: docker-compose
-      become: yes
-    - role: stack
-      become: yes
+    - role: install-docker
+    - role: install-docker-compose
+
+- name: Deploy stack
+  hosts: group_docker_node
+  remote_user: ubuntu
+  gather_facts: false
+  tags:
+    - deploy
+    - stack
+  roles:
+    - role: deploy-stack

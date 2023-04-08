@@ -1,3 +1,12 @@
+- name: Configure base directory permission
+  become: yes
+  file:
+    state: directory
+    path: /srv
+    mode: 0755
+    owner: ubuntu
+    group: ubuntu
+
 - name: Create config directories
   file:
     state: directory
@@ -6,57 +15,41 @@
   with_items:
     - prometheus
     - grafana/datasources
-  tags:
-    - stack
 
 - name: Deploy prometheus config
   template:
     src: prometheus.yml.j2
     dest: /srv/prometheus/prometheus.yml
-  tags:
-    - stack
 
 - name: Deploy grafana datasources
   template:
     src: datasources.yml.j2
     dest: /srv/grafana/datasources/prometheus.yml
-  tags:
-    - stack
 
 - name: Deploy docker-compose config
   template:
     src: docker-compose.yml.j2
     dest: /srv/docker-compose.yml
-  tags:
-    - stack
-    -
+
 - name: Create environment file
   file:
     state: touch
     path: /srv/.env
     mode: '0644'
-  tags:
-    - stack
 
 - name: Configure environment user
   lineinfile:
     path: /srv/.env
     regexp: '^ADMIN_USER='
     line: "ADMIN_USER={{ grafana.username }}"
-  tags:
-    - stack
 
 - name: Configure environment password
   lineinfile:
     path: /srv/.env
     regexp: '^ADMIN_PASSWORD='
     line: "ADMIN_PASSWORD={{ grafana.password }}"
-  tags:
-    - stack
 
 - name: Run `docker-compose up -d`
   shell: docker-compose up -d
   args:
     chdir: /srv
-  tags:
-    - stack
