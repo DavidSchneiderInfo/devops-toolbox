@@ -6,4 +6,5 @@ cd /devops/terraform
 
 terraform plan \
     -out /tmp/terraform_plan \
-    -var="domain_name=${DOMAIN_NAME}"
+    -var="domain_name=${DOMAIN_NAME}" \
+    -var="dns_registry_id=${DNS_REGISTRY_ID}"

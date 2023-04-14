@@ -4,10 +4,6 @@ networks:
   monitoring:
     driver: bridge
 
-volumes:
-  grafana_data: {}
-  prometheus_data: {}
-  registry_data: {}
 
 services:
   proxy:
@@ -16,13 +12,15 @@ services:
     restart: unless-stopped
     ports:
       - 80:80
+    networks:
+      - monitoring
 
   registry:
     image: registry:2
     container_name: registry
     restart: unless-stopped
     volumes:
-      - registry_data:/var/lib/registry
+      - /srv/data/registry_data:/var/lib/registry
 
   node-exporter:
     image: prom/node-exporter:latest
@@ -48,7 +46,7 @@ services:
     restart: unless-stopped
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
-      - prometheus_data:/prometheus
+      - /srv/data/prometheus_data:/prometheus
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -75,7 +73,7 @@ services:
     ports:
       - 3000:3000
     volumes:
-      - grafana_data:/var/lib/grafana
+      - /srv/data/grafana_data:/var/lib/grafana
       - ./grafana/datasources:/etc/grafana/provisioning/datasources
     networks:
       - monitoring

@@ -1,11 +1,3 @@
-data "aws_ami" "node_ami" {
-    owners = ["self"]
-    filter {
-        name   = "name"
-        values = ["docker-node"]
-    }
-}
-
 resource "aws_instance" "node_instance" {
     ami           = data.aws_ami.node_ami.id
     instance_type = "t2.micro" 
@@ -24,13 +16,10 @@ resource "aws_instance" "node_instance" {
         AnsibleGroup = "docker_node"
         AnsibleHost = "yes"
     }
+
+    user_data = data.template_file.node_instance_bootstrap.template
 }
 
-resource "aws_eip" "node_eip" {
-    instance = aws_instance.node_instance.id
-
-    tags = {
-        Name = "node_eip"
-        Environment = var.environment_name
-    }
+data "template_file" "node_instance_bootstrap" {
+    template = file("${path.module}/bootstrap.sh")
 }

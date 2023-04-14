@@ -13,8 +13,9 @@
     path: "/srv/{{ item }}"
     mode: '0755'
   with_items:
-    - prometheus
+    - data
     - grafana/datasources
+    - prometheus
 
 - name: Deploy prometheus config
   template:

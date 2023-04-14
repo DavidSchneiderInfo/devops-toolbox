@@ -29,3 +29,7 @@ variable "allow_https_ingress_name" {
 variable "allow_http_ingress_name" {
     type = string
 }
+
+variable "node_volume_size" {
+    type = string
+}

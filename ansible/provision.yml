@@ -1,16 +1,4 @@
 ---
-- name: Install docker
-  hosts: group_docker_node
-  remote_user: ubuntu
-  become: yes
-  become_user: root
-  gather_facts: false
-  tags:
-    - install
-  roles:
-    - role: install-docker
-    - role: install-docker-compose
-
 - name: Deploy stack
   hosts: group_docker_node
   remote_user: ubuntu

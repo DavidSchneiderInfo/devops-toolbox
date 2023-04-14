@@ -2,7 +2,6 @@
   apt:
     name: "{{ item }}"
     state: present
-    update_cache: yes
   with_items:
     - apt-transport-https
     - ca-certificates
@@ -23,10 +22,6 @@
   apt_repository:
     repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
     state: present
-    update_cache: yes
-
-- name: Update apt packages
-  apt:
     update_cache: yes
 
 - name: Install docker
