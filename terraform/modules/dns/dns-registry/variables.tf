@@ -9,11 +9,3 @@ variable "domain_name" {
 variable "environment_name" {
   type = string
 }
-
-variable "root_ip" {
-  type = string
-}
-
-variable "is_prod" {
-  type = bool
-}

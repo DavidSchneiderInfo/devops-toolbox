@@ -1,11 +1,11 @@
-output "nameserver" {
-    value = aws_route53_zone.dns_zone.name_servers
+output "nameservers" {
+    value = module.dns-registry[0].nameservers
+}
+
+output "environment_url" {
+  value = module.dns-registry[0].environment_url
 }
 
 output "environment_name" {
   value = var.environment_name
-}
-
-output "environment_url" {
-  value = "https://${aws_route53_zone.dns_zone.name}/"
 }

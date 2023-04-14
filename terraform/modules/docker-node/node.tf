@@ -18,6 +18,10 @@ resource "aws_instance" "node_instance" {
     }
 
     user_data = data.template_file.node_instance_bootstrap.template
+
+    lifecycle {
+        create_before_destroy = true
+    }
 }
 
 data "template_file" "node_instance_bootstrap" {

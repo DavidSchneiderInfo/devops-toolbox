@@ -14,6 +14,6 @@ output "environment_url" {
   value = module.dns.environment_url
 }
 
-output "nameserver" {
-  value = module.dns.nameserver
+output "nameservers" {
+  value = module.dns.nameservers
 }

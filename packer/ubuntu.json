@@ -14,7 +14,9 @@
       },
       "instance_type": "t2.micro",
       "ssh_username": "ubuntu",
-      "ami_name": "ubuntu-20.04"
+      "ami_name": "ubuntu-20.04",
+      "force_deregister": true,
+      "force_delete_snapshot": true
     }
   ],
   "provisioners": [

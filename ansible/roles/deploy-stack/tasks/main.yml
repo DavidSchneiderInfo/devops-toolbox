@@ -50,7 +50,15 @@
     regexp: '^ADMIN_PASSWORD='
     line: "ADMIN_PASSWORD={{ grafana.password }}"
 
-- name: Run `docker-compose up -d`
-  shell: docker-compose up -d
-  args:
-    chdir: /srv
+- name: Configure service unit
+  become: yes
+  template:
+    src: systemd-unit.j2
+    dest: /lib/systemd/system/stack.service
+
+- name: Make sure service unit is running
+  become: yes
+  ansible.builtin.systemd:
+    enabled: true
+    state: started
+    name: stack
