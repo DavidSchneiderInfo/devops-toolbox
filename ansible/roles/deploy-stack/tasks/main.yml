@@ -16,49 +16,59 @@
     - data
     - grafana/datasources
     - prometheus
+  notify: "restart stack"
 
 - name: Deploy prometheus config
   template:
     src: prometheus.yml.j2
     dest: /srv/prometheus/prometheus.yml
+  notify: "restart stack"
 
 - name: Deploy grafana datasources
   template:
     src: datasources.yml.j2
     dest: /srv/grafana/datasources/prometheus.yml
+  notify: "restart stack"
 
 - name: Deploy docker-compose config
   template:
     src: docker-compose.yml.j2
     dest: /srv/docker-compose.yml
+  notify: "restart stack"
 
 - name: Create environment file
   file:
     state: touch
     path: /srv/.env
     mode: '0644'
+  register: create_env_file_result
+  changed_when: create_env_file_result.diff.before.state == 'absent'
+  notify: "restart stack"
 
 - name: Configure environment user
   lineinfile:
     path: /srv/.env
     regexp: '^ADMIN_USER='
     line: "ADMIN_USER={{ grafana.username }}"
+  notify: "restart stack"
 
 - name: Configure environment password
   lineinfile:
     path: /srv/.env
     regexp: '^ADMIN_PASSWORD='
     line: "ADMIN_PASSWORD={{ grafana.password }}"
+  notify: "restart stack"
 
 - name: Configure service unit
   become: yes
   template:
     src: systemd-unit.j2
     dest: /lib/systemd/system/stack.service
+  notify: "restart stack"
 
 - name: Make sure service unit is running
   become: yes
-  ansible.builtin.systemd:
+  systemd:
     enabled: true
     state: started
     name: stack

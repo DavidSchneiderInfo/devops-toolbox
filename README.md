@@ -2,7 +2,7 @@
 
 A collection of tools to work on environments.
 
-## Setup
+## Configuration
 
 Before using the toolbox you will need to create the necessary credentials. You will need 
 - an IAM account to connect to AWS 
@@ -23,23 +23,41 @@ Once you prepared everything follow these steps:
 - Optional: define a region and zone for the environment
 
  
-
 ## Usage
 
-### Terraform Init
+### Packer
+
+With Packer we build the images used for provisioning our server instance.
 
 ```bash
-docker-compose run --rm toolbox terraform_init
+docker-compose run toolbox packer_build
 ```
 
-### Terraform Plan
+### Ansible
+
+We use Ansible within Packer to configure base images or later directly to re-configure existing infrastructure.
 
 ```bash
-docker-compose run --rm toolbox terraform_plan
+docker-compose run toolbox ansible_\*
 ```
 
-### Terraform Apply
+- ansible_ping
+- ansible_playbook
+
+### Terraform
+
+Once we have prepared images, we can build up and maintain the infrastructure with Terraform.
 
 ```bash
-docker-compose run --rm toolbox terraform_apply
+docker-compose run toolbox terraform_\*
 ```
+
+- terraform_apply
+- terraform_destroy
+- terraform_init
+- terraform_plan
+- terraform_workspace_create
+- terraform_workspace_delete
+- terraform_workspace_list
+- terraform_workspace_select
+

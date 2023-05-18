@@ -1,0 +1,6 @@
+- name: Restart stack
+  become: yes
+  systemd:
+    state: restarted
+    name: stack
+  listen: "restart stack"

@@ -15,13 +15,6 @@ services:
     networks:
       - monitoring
 
-  registry:
-    image: registry:2
-    container_name: registry
-    restart: unless-stopped
-    volumes:
-      - /srv/data/registry_data:/var/lib/registry
-
   node-exporter:
     image: prom/node-exporter:latest
     container_name: node-exporter
